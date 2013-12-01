@@ -1,0 +1,25 @@
+# Grails
+target
+*.log
+/*.zip
+/plugin.xml
+*.db
+
+# IntelliJ stuff
+.idea
+*.ipr
+*.iml
+*.iws
+/out
+
+# eclipse
+target-eclipse
+.project
+.classpath
+.settings
+
+.DS_Store
+*/.DS_Store
+
+
+

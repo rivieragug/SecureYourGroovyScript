@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Runtime Secure AST</title>
+    <meta name="description" content="The power of Groovy for DSL and User Interaction in this presentation">
+    <meta name="author" content="Corinne Krych, Sebastien Blanc, Fabrice Matrat">
+    <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/grails.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/grails.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/grails.png">
+    <link rel="apple-touch-icon-precomposed" href="img/grails.png">
+    <link rel="stylesheet" href="css/codemirror.css">
+    <link rel="stylesheet" href="css/eclipse.css">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/jqcloud.css" rel="stylesheet">
+    <link href="css/prez.css" media="all" rel="stylesheet">
+</head>
+<body>
+<div id="header" >
+    <div style="float:left">
+        <a href="http://groovy.codehaus.org">
+            <table><tr><td style="vertical-align:middle;"><img  src="img/groovy.png" style="height:35px"/></td><td > </td></tr></table>
+        </a>
+    </div>
+    <div style="display: inline-block; margin:0 auto;">
+        <a id="currentTitle" style="font-size:20px;" href="https://github.com/corinnekrych/Gr8ConfUS">Runtime Secure AST</a>
+    </div>
+    <div style="float:right">
+        <a href="http://grails.org">
+            <table><tr><td style="vertical-align: middle; "> </td><td><img src="img/groovy.png" style="height:35px"/></td></tr></table>
+        </a>
+    </div>
+</div>
+<div style="overflow: hidden;" id="wrapper">
+<ul>
+<li class="slide"  title="">
+
+    <div class="container-narrow">
+        <hr>
+
+        <div class="jumbotron">
+            <h1>Groovy Hackengarten:</h1><br/>
+            <h1>Runtime Secure AST</h1>
+        </div>
+
+        <hr>
+
+
+        <div>
+            <p style=""><img width="20%" src="img/rivierargug.png"/></p> <br/>
+            <h1>RivieraGUG</h1>
+        </div>
+        <hr>
+
+
+    </div>
+</li>
+
+<li class="slide" title="Cedric">
+    <div class="container-narrow">
+        <hr>
+
+        <div class="jumbotron">
+            <h1>Cedric Champeau</h1><br/>
+            <img width="15%" src="img/cedric.jpg"/><br/>
+            <p style="line-height:150%; font-size:20px;">Groovy Geek</p>
+        </div>
+
+        <hr>
+
+        <div class="row-fluid marketing">
+            <div class="span4">
+                <a href="https://twitter.com/cedricchampeau"><img src="img/twitter.png" /></a>
+                <h4>@CedricChampeau</h4>
+            </div>
+            <div class="span4">
+                <a href="https://github.com/melix"><img src="img/github.png"/></a>
+                <h4>https://github.com/melix</h4>
+            </div>
+            <div class="span4">
+                <a href="http://www.jroller.com/melix/"><img width="24px" src="img/blogger.png" ></a>
+                <h4>http://www.jroller.com/melix/</h4>
+            </div>
+        </div>
+        <hr/>
+        <br/>
+    </div>
+</li>
+
+
+<li class="slide" title="When? where?">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <br/><h1>Where? When?</h1><br/>
+        </div>
+        <hr>
+        <div class="row-fluid marketing">
+            <div class="span12">
+                <p style="line-height: 150%;font-size: 30px">Saturday 18th January 2014</p>
+                <p style="line-height: 150%;font-size: 30px">from 9am to 6pm</p>
+                <p style="line-height: 150%;font-size: 30px">Les Satellites - coworking</p>
+                <p style="line-height: 150%;font-size: 20px">6 rue du Congrès - Nice</p>
+            </div>
+        </div>
+        <hr>
+    </div>
+</li>
+
+<li class="slide" title="What">
+    <div class="container-narrow">
+        <hr>
+        <div class="jumbotron">
+            <h1>What?</h1><br/>
+        </div>
+        <hr>
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <p style="line-height: 150%;font-size: 35px"> <strong>Runtime Sandbox for Groovy Script</strong></p>
+                <p style="line-height: 150%;font-size: 30px" >Based on <a href=="http://groovy.codehaus.org/gapi/org/codehaus/groovy/control/customizers/SecureASTCustomizer.html">SecureASTCustomizer</a> the idea is to provide (even at runtime) a secure environment to run your Groovy script. </p>
+            </div>
+
+            <div class="span2">
+            </div>
+
+        </div> <br/>
+        <hr/>
+    </div>
+</li>
+
+
+<li class="slide" style="text-align: left" title="Use Case" press=" ">
+    <textarea id="editor10" name="editor10">
+def binding = new Binding()
+def compilerConfig = new CompilerConfiguration()
+
+def secure = new SecureASTCustomizer()
+secure.with {
+    receiversClassesBlackList = [
+        java.lang.System
+    ].asImmutable()
+}
+
+compilerConfig.addCompilationCustomizers(secure)
+
+def shell = new GroovyShell(this.class.classLoader,
+    binding,
+    compilerConfig)
+
+def script = '''
+System.exit(-1)
+'''
+
+shell.evaluate script
+    </textarea>
+</li>
+
+<li class="slide" style="text-align: left" title="">
+    <div class="container-narrow">
+        <div class="row-fluid marketing">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <hr>
+                <pre class="code" id="output10">
+                </pre>
+                <canvas id="canvas10" width="1000" height="1000" style="max-width: 500px; width: 100%;"></canvas>
+                </pre>
+                <hr>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+    </div>
+</li>
+
+ <li class="slide" title="Homework">
+        <div class="container-narrow">
+            <hr>
+            <div class="jumbotron">
+                <h1>Homework</h1><br/>
+            </div>
+            <hr>
+            <div class="row-fluid marketing">
+                <div class="span2">
+                </div>
+                <div class="span8">
+                    <p style="line-height: 150%;font-size: 35px"> <strong>Runtime Sandbox for Groovy Script</strong></p>
+                    <p style="line-height: 150%;font-size: 30px" >Based on <a href=="http://groovy.codehaus.org/gapi/org/codehaus/groovy/control/customizers/SecureASTCustomizer.html">SecureASTCustomizer</a> the idea is to provide (even at runtime) a secure environment to run your Groovy script. </p>
+                </div>
+
+                <div class="span2">
+                </div>
+
+            </div> <br/>
+            <hr/>
+        </div>
+    </li>
+
+</ul>
+</div>
+<div id="footer">
+    <div style="float:left;">
+        <a id="previous">
+            <table><tr><td style="vertical-align:middle;"><img  src="img/previous.png" style="height:40px"/></td><td id="previous-title"> Previous</td></tr></table>
+        </a>
+    </div>
+
+    <div style="display: inline-block; margin:0 auto;">
+        <a id="currentPress" style="font-size:20px;"></a>
+    </div>
+    <div style="float:right;">
+        <a id="next">
+            <table><tr><td id="next-title" style="vertical-align: middle; ">Next</td><td><img src="img/next.png" style="height:40px"/></td></tr></table>
+        </a>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script src="js/codemirror.js"></script>
+<script src="js/groovy.js"></script>
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="js/html5.js">
+</script>
+<![endif]-->
+<script src="js/bootstrap.js"></script>
+<script src="js/editor.js"></script>
+<script src="js/jquery.airport-1.1.source.js"></script>
+<script src="js/jqcloud-1.0.2.min.js"></script>
+<script src="js/prez.js"></script>
+<script src="js/slide.js"></script>
+<script src="js/ktDraw.js"></script>
+</body>
+</html>
