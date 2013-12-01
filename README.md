@@ -26,3 +26,8 @@ What
 
 Contribution to the core Groovy langage to secure Groovy script at runtime.
 Enhancement to the SecureASTCustomizer in place which allows securization at compile time but do not provide security at runtime due to the dynamic nature of the langage.
+
+Wiki
+====
+
+https://github.com/rivieragug/SecureYourGroovyScript/wiki
