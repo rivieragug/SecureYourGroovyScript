@@ -1,29 +1,27 @@
-DslPrez
-=======
+Groovy HackenGarten
+===================
 
-This presentation was given in:
-- Gr8Conf EU June 2012 with [Corinne Krych](http://corinnekrych.github.io/) and [Sebastien Blanc](https://github.com/sebastienblanc) 
+Runtime Secure AST
 
-- GGX in London December 2012 with [Corinne Krych](http://corinnekrych.github.io/) and [Fabrice Matrat](http://fabricematrat.github.io/)    
 
-- Greach in Madrid January 2013 with [Corinne Krych](http://corinnekrych.github.io/) and [Sebastien Blanc](https://github.com/sebastienblanc) 
+Location
+========
+Date : Saturday 18th January 2014 from 9am to 6pm
+When : Les Satellites - coworking 6 rue du Congrès - Nice
 
-- RivieraGUG April 2013 with [Corinne Krych](http://corinnekrych.github.io/) and [Fabrice Matrat](http://fabricematrat.github.io/)    
 
-- Gr8ConfUS July 2013 with [Corinne Krych](http://corinnekrych.github.io/) and [Fabrice Matrat](http://fabricematrat.github.io/)    
+Who
+===
 
-Where it comes from?
-====================
-Writing an embedded Groovy DSL for end users which can read as plain English. What a crazy idea!
+Technical Direction : Cedric Champeau -- The Master of AST 
 
-The starting point was when working in Amadeus, I was asked to design a domain-specific language aimed a Travel Agent.
+Participant : Whoever wants to participate
 
-From business point of view, requiremrent is: 
+Organizer : RivieraGUG
 
-**I want something simple, something I can understand.** 
 
-Digging how I can quickly design a languge that fit reavel agent, I discover Groovy.
-That's when I fell in love with Groovy. DSL are so elegant and powerfull.
-With this presentation I want to share with you our journey into the world of DSL coding.
+What
+====
 
-Corinne.
+Contribution to the core Groovy langage to secure Groovy script at runtime.
+Enhancement to the SecureASTCustomizer in place which allows securization at compile time but do not provide security at runtime due to the dynamic nature of the langage.
