@@ -7,6 +7,7 @@ Runtime Secure AST
 Location
 ========
 Date : Saturday 18th January 2014 from 9am to 6pm
+
 When : Les Satellites - coworking 6 rue du Congrès - Nice
 
 
