@@ -18,6 +18,8 @@ Technical Direction : Cedric Champeau -- The Master of AST
 
 Participant : Whoever wants to participate
 
+ * Alexandre di Costanzo [@thepieuvre](https://github.com/thepieuvre)
+
 Organizer : RivieraGUG
 
 
