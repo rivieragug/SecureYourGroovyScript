@@ -19,7 +19,11 @@ Technical Direction : Cedric Champeau -- The Master of AST
 Participant : Whoever wants to participate
 
  * Alexandre di Costanzo [@thepieuvre](https://github.com/thepieuvre)
-
+ * Fabrice Matrat [@fabricematrat](https://github.com/fabricematrat)
+ * Corinne Krych [@corinnekrych](https://github.com/corinnekrych)
+ * Sebastien Blanc [@sebi2406](https://github.com/sebastienblanc)
+ * Bertrand Goeztmann [@bgoetzmann](https://github.com/bgoetzmann)
+ 
 Organizer : RivieraGUG
 
 
