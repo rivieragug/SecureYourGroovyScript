@@ -23,6 +23,7 @@ Participant : Whoever wants to participate
  * Corinne Krych [@corinnekrych](https://github.com/corinnekrych)
  * Sebastien Blanc [@sebi2406](https://github.com/sebastienblanc)
  * Bertrand Goeztmann [@bgoetzmann](https://github.com/bgoetzmann)
+ * Youri Bonnaffé [@youribm](https://github.com/youribonnaffe)
  
 Organizer : RivieraGUG
 
